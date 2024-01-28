@@ -76,10 +76,14 @@ const params = [1, 'Ronald', 'Firbank', 1];
 
 db.query(sql, params, (err, result) => {
     if (err) {
-        console.log(err);
+        res.status(400).json({ error: err.message })
+        return;
     }
 
-    console.log(result);
+    res.json({
+        message: 'success',
+        data: body
+    });
 });
 
 // default response for any other request (not found)
